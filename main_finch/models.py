@@ -17,7 +17,7 @@ class finch(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'cat_id': self.id})
+        return reverse('detail', kwargs={'finch_id': self.id})
 
 class Feeding(models.Model):
     date = models.DateField('feeding date')
@@ -27,7 +27,7 @@ class Feeding(models.Model):
         default=MEALS[0][0]
     )
     
-    cat = models.ForeignKey(finch, on_delete=models.CASCADE)
+    finch = models.ForeignKey(finch, on_delete=models.CASCADE)
 
     def __str__(self):
     # Nice method for obtaining the friendly value of a Field.choice
