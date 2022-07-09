@@ -7,7 +7,7 @@ MEALS = (
     ('D', 'Dinner')
 )
 # Create your models here.
-class finch(models.Model):
+class Finch(models.Model):
     name = models.CharField(max_length=100)
     breed = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
@@ -27,8 +27,7 @@ class Feeding(models.Model):
         default=MEALS[0][0]
     )
     
-    finch = models.ForeignKey(finch, on_delete=models.CASCADE)
+    finch = models.ForeignKey(Finch, on_delete=models.CASCADE)
 
     def __str__(self):
-    # Nice method for obtaining the friendly value of a Field.choice
         return f"{self.get_meal_display()} on {self.date}"
